@@ -2,10 +2,15 @@ import asyncio
 from playwright.async_api import async_playwright
 from faker import Faker
 import time
+import sys
+
 
 async def run():
-    # Ask user for the target URL
-    url = input("Introduce la URL a probar: ").strip()
+    # Get URL from argv or ask the user, and strip whitespace
+    if len(sys.argv) > 1:
+        url = sys.argv[1].strip()
+    else:
+        url = input("Introduce la URL a probar: ").strip()
     fake = Faker()
 
     async with async_playwright() as p:
