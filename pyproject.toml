@@ -1,0 +1,21 @@
+[project]
+name = "load-test-instruqt"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Your name", email = "your@email.com" }
+]
+license = {text = "GPL-3.0"}
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+load-test-instruqt = "load_test_instruqt:main"
+
+[dependency-groups]
+dev = []
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
