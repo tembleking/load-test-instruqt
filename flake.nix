@@ -33,6 +33,7 @@
               packages = [
                 python3
                 uv
+                ruff
               ];
               inputsFrom = [ load-test-instruqt ];
             };
