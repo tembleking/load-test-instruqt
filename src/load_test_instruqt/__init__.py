@@ -45,6 +45,7 @@ async def run():
             'div[role="progressbar"][aria-valuenow="100"]',
             timeout=3_600_000  # 60 minutos en ms
         )
+        await asyncio.sleep(5)
         await page.click('button.bg-lab-action-primary:has-text("Start")')
         await page.wait_for_load_state('networkidle')
         print("✅ Second Start clicked and background processing completed")
