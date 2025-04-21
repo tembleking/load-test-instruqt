@@ -1,5 +1,7 @@
 {
   python3Packages,
+  makeWrapper,
+  playwright-driver,
 }:
 let
   pyproject = builtins.fromTOML (builtins.readFile ./pyproject.toml);
@@ -16,8 +18,21 @@ python3Packages.buildPythonApplication {
   ];
 
   dependencies = with python3Packages; [
-    # your dependencies
+    playwright
+    faker
   ];
+
+  nativeBuildInputs = [
+    makeWrapper
+  ];
+
+  buildInputs = [ playwright-driver.browsers ];
+
+  postFixup = ''
+    wrapProgram $out/bin/load-test-instruqt \
+      --set-default PLAYWRIGHT_BROWSERS_PATH ${playwright-driver.browsers} \
+      --set-default PLAYWRIGHT_SKIP_VALIDATE_HOST_REQUIREMENTS true
+  '';
 
   meta.mainProgram = "load-test-instruqt"; # Your script name to execute as command
 }

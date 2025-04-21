@@ -34,6 +34,7 @@
                 python3
                 uv
               ];
+              inputsFrom = [ load-test-instruqt ];
             };
 
           formatter = pkgs.nixfmt-rfc-style;
